@@ -1,6 +1,16 @@
 #-*- mode:makefile-gmake; -*-
 ROOT = $(shell pwd)
-USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+
+UNAME := $(shell uname)
+
+# Grab the right serial device for the Makerbot
+ifeq ($(UNAME), Linux)
+  USB ?= $(shell ls /dev/ | grep ttyACM | head -l)
+endif
+
+ifeq ($(UNAME), Darwin)
+  USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+endif
 
 ## Apps
 GRUE ?= $(ROOT)/vendor/Miracle-Grue/bin/miracle_grue
