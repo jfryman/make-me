@@ -5,7 +5,7 @@ UNAME := $(shell uname)
 
 # Grab the right serial device for the Makerbot
 ifeq ($(UNAME), Linux)
-  USB ?= $(shell ls /dev/ | grep ttyACM | head -l)
+  USB ?= $(shell ls /dev/ | grep ttyACM | head -1)
 endif
 
 ifeq ($(UNAME), Darwin)
