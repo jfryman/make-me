@@ -26,7 +26,7 @@ ifneq ($(words $(MAKECMDGOALS)), 1)
 	@echo "!!!> ERROR:Can only make one thing at a time" >&2
 	@exit 1
 endif
-	@[[ -c /dev/$(USB) ]] || { echo "No USB device found"; exit 1; }
+	@[ -c /dev/$(USB) ] || { echo "No USB device found"; exit 1; }
 	@echo "Printing"
 	(                                       \
 		$(PRINT) $(realpath $^) &           \
