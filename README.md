@@ -4,9 +4,11 @@ to the next level of awesome. Embrace the meatspace!
 
 ## Support
 
-At the moment, this only works on **OS X 10.8+** and ships with a binary
+At the moment, this works on **OS X 10.8+** and ships with a binary
 compiled for this platform. However, the binary relates to make-me's
 photo function, so some customization should enable other systems.
+
+It has also been tested and works with Ubuntu Linux
 
 [Homebrew](http://mxcl.github.com/homebrew/) is required for the
 bootstrap to run. If you don't have it, go get it. We'll still be here.
