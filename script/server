@@ -1,15 +1,15 @@
 #!/bin/sh
-if [[ -z $RACK_ENV ]]; then
+if [ -z $RACK_ENV ]; then
   export RACK_ENV="development"
 fi
 
-if [[ -z $RACK_ROOT ]]; then
+if [ -z $RACK_ROOT ]; then
   export RACK_ROOT=`pwd`
 fi
 
 script/bootstrap
 
-if [[ $RACK_ENV == 'development' ]]; then
+if [ $RACK_ENV = 'development' ]; then
   bin/shotgun
 else
   bin/unicorn -c server/config/unicorn.rb

@@ -1,6 +1,16 @@
 #-*- mode:makefile-gmake; -*-
 ROOT = $(shell pwd)
-USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+
+UNAME := $(shell uname)
+
+# Grab the right serial device for the Makerbot
+ifeq ($(UNAME), Linux)
+  USB ?= $(shell ls /dev/ | grep ttyACM | head -1)
+endif
+
+ifeq ($(UNAME), Darwin)
+  USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+endif
 
 ## Apps
 GRUE ?= $(ROOT)/vendor/Miracle-Grue/bin/miracle_grue
@@ -16,7 +26,7 @@ ifneq ($(words $(MAKECMDGOALS)), 1)
 	@echo "!!!> ERROR:Can only make one thing at a time" >&2
 	@exit 1
 endif
-	@[[ -c /dev/$(USB) ]] || { echo "No USB device found"; exit 1; }
+	@[ -c /dev/$(USB) ] || { echo "No USB device found"; exit 1; }
 	@echo "Printing"
 	(                                       \
 		$(PRINT) $(realpath $^) &           \
