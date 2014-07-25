@@ -75,6 +75,7 @@ module MakeMe
       scale       = args[:scale]
       slicer_args = (args[:slicer_args] || {})
       quality     = (args[:quality]  || 'medium')
+      temp        = (args[:temp] || 230)
 
       # ensure no URLs point ot the local file system
       stl_urls.each do |url|
@@ -118,6 +119,12 @@ module MakeMe
         :roofLayerCount => roofs,
         :floorLayerCount => floors,
         :numberOfShells => shells,
+        :extrusionProfiles => {
+          :insets => temp,
+          :infill => temp,
+          :firstlayer => temp,
+          :outlines => temp,
+        }
       }.merge(slicer_args)
 
       configurator = MakeMe::MiracleGrueConfigurator.new(slicer_args)
