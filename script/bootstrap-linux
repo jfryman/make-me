@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+apt-get install -y git build-essential python python-virtualenv avrdude scons libcurl4-openssl-dev ruby1.9.1 rubygems
