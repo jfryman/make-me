@@ -120,10 +120,10 @@ module MakeMe
         :floorLayerCount => floors,
         :numberOfShells => shells,
         :extrusionProfiles => {
-          :insets => temp,
-          :infill => temp,
-          :firstlayer => temp,
-          :outlines => temp,
+          :insets => { :temperature => temp, :feedrate => 80 },
+          :infill => { :temperature => temp, :feedrate => 80 },
+          :firstlayer => { :temperature => temp, :feedrate => 50 },
+          :outlines => { :temperature => temp, :feedrate => 50 },
         }
       }.merge(slicer_args)
 

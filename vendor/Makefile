@@ -16,7 +16,7 @@ s3g/virtualenv/bin/activate:
 
 ## System
 brews:
-	@brew install avrdude || echo "AVRDude already brew installed [or failed]"
-	@brew install scons || echo "scons already brew installed [or failed]"
+	apt-get install -y avrdude || echo "AVRDude already brew installed [or failed]"
+	apt-get install -y scons || echo "scons already brew installed [or failed]"
 
 .PHONY: all brews grue s3g
